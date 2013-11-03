@@ -101,6 +101,11 @@ If the <code>[:scout][:key]</code> attribute is not provided or the scout execut
       <td>The environment you would like this server to belong to, if you use environments. Environments are defined through scoutapp.com's web UI.</td>
       <td><code>nil</code></td>
     </tr>
+    <tr>
+      <td>[:scout][:suffix]</td>
+      <td>Commands to append to the end of the entry in the scout crontab. For example to redirect stderr to dev null <code>2>/dev/null</code></td>
+      <td><code>nil</code></td>
+    </tr>
   </tbody>
 </table>
 

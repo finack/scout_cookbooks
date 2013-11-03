@@ -34,11 +34,12 @@ if node[:scout][:key]
   http_proxy_attr = node[:scout][:http_proxy] ? %{ --http-proxy "#{node[:scout][:http_proxy]}"} : ""
   https_proxy_attr = node[:scout][:https_proxy] ? %{ --https-proxy "#{node[:scout][:https_proxy]}"} : ""
   environment_attr = node[:scout][:environment] ? %{ --environment "#{node[:scout][:environment]}"} : ""
+  suffix = node[:scout][:suffix] ? %{ #{node[:scout][:suffix]}} : ""
 
   # schedule scout agent to run via cron
   cron "scout_run" do
     user node[:scout][:user]
-    command "#{scout_bin} #{node[:scout][:key]}#{name_attr}#{server_attr}#{roles_attr}#{http_proxy_attr}#{https_proxy_attr}#{environment_attr}"
+    command "#{scout_bin} #{node[:scout][:key]}#{name_attr}#{server_attr}#{roles_attr}#{http_proxy_attr}#{https_proxy_attr}#{environment_attr}#{suffix}"
     only_if do File.exist?(scout_bin) end
   end
 else
